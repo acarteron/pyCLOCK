@@ -18,6 +18,7 @@ import random
 import datetime
 import calendar
 import os
+import os.path
 import math
 
 pygame.init()
@@ -62,6 +63,16 @@ def calc_alarm():
 		
 calc_alarm()
 
+def load_music(filename):
+	my_path = os.path.dirname(__file__)
+	for path in (my_path, os.path.join(my_path, '../share/pyclock')):
+		try:
+			pygame.mixer.music.load(os.path.join(path, filename))
+		except pygame.error:
+			pass
+		else:
+			return
+	print 'Failed to load music "%s"' % filename
 
 def sys_write( path, value ):
 	sys_path = '/sys/' + str( path )
@@ -665,11 +676,9 @@ def timer_loop():
 
 			if timer_sec == 0:
 				timer_start = False
-				pygame.mixer.music.load("tone.wav")
+				load_music("tone.wav")
 				pygame.mixer.music.play(-1)
-	
-			
-		
+
 		disp_timer(pos)
 		pygame.display.update()
 		pygame.time.delay(100) 
@@ -746,7 +755,7 @@ def alarm_loop():
 		if alarm_date - datetime.datetime.now() < datetime.timedelta(0):
 			if not alarm_flag:
 				alarm_flag = True
-				pygame.mixer.music.load("tone.wav")
+				load_music("tone.wav")
 				pygame.mixer.music.play(-1)
 				
 				
