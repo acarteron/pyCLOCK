@@ -54,7 +54,7 @@ def calc_alarm():
 	global alarm_date
 	
 	day = datetime.datetime.now()
-	alarm_date = day.replace(hour=(alarm_min / 60),minute=(alarm_min % 60),second=0,microsecond=0)
+	alarm_date = day.replace(hour=(alarm_min // 60),minute=(alarm_min % 60),second=0,microsecond=0)
 
 	delta = alarm_date - day
 
