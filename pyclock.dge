@@ -131,11 +131,11 @@ def do_setup():
 	print(cmd_str)
 
 
-        os.system('echo %s|sudo -S %s' % ('', cmd_str))
-        os.system('echo %s|sudo -S %s' % ('', 'sudo hwclock -uw'))
+        # os.system('echo %s|sudo -S %s' % ('', cmd_str))
+        # os.system('echo %s|sudo -S %s' % ('', 'hwclock -uw'))
 
-	# os.system( cmd_str )
-	# os.system( "sudo hwclock -uw" )
+	os.system( cmd_str )
+	os.system( "sudo hwclock -uw" )
 
 
 
