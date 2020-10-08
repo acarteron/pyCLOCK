@@ -225,7 +225,7 @@ def disp_cal( pos , diff ):
 	temp = day.year * 12 + (day.month - 1)
 	temp += diff
 	
-	disp_year = temp / 12 
+	disp_year = temp // 12 
 	disp_mon = (temp % 12) + 1
 		
 	# draw current month
