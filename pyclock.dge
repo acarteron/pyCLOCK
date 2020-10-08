@@ -127,11 +127,15 @@ def do_setup():
 	day_str += "%02d:%02d:%02d" % ( day.hour , day.minute, day.second )
 
 
-	cmd_str = "date --set \"%s\"" % day_str
+	cmd_str = "sudo date --set \"%s\"" % day_str
 	print(cmd_str)
-	
-	os.system( cmd_str )
-	os.system( "hwclock -uw" )
+
+
+        os.system('echo %s|sudo -S %s' % ('', cmd_str))
+        os.system('echo %s|sudo -S %s' % ('', 'sudo hwclock -uw'))
+
+	# os.system( cmd_str )
+	# os.system( "sudo hwclock -uw" )
 
 
 
