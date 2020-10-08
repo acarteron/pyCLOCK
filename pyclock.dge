@@ -382,7 +382,7 @@ def disp_alarm(pos):
 	x = 50
 	
 	day_num = [
-		"%02d" % (alarm_min / 60) ,
+		"%02d" % (alarm_min // 60) ,
 		"%02d" % (alarm_min % 60) ]
 			
 	day_after = [ ":","" ]
@@ -403,7 +403,7 @@ def disp_alarm(pos):
 	y = 140
 	
 	day = datetime.datetime.now()
-	alm = day.replace(hour=(alarm_min / 60),minute=(alarm_min % 60),second=0,microsecond=0)
+	alm = day.replace(hour=(alarm_min // 60),minute=(alarm_min % 60),second=0,microsecond=0)
 	
 	delta = alm - day
 
@@ -411,9 +411,9 @@ def disp_alarm(pos):
 		alm += datetime.timedelta(1)
 		delta += datetime.timedelta(1)
 	
-	delta_min = delta.seconds / 60
+	delta_min = delta.seconds // 60
 		
-	msg = "ALARM AFTER %02d:%02d" % ( delta_min / 60 , delta_min % 60 )
+	msg = "ALARM AFTER %02d:%02d" % ( delta_min // 60 , delta_min % 60 )
 	draw_string( msg,x,y,color_white, True )
 	
 	x = half_sw/2
@@ -513,7 +513,7 @@ def disp_timer( pos ):
 	if pos == 0:
 		color = color_purple
 	
-	x = x + draw_string( "%02d" % (timer_sec / 60) , x,y, color ).get_width()
+	x = x + draw_string( "%02d" % (timer_sec // 60) , x,y, color ).get_width()
 
 	x = x + draw_string( ":" , x,y, color_white ).get_width()
 	
